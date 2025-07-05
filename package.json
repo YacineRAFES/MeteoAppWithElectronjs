@@ -1,0 +1,15 @@
+{
+  "name": "meteoappelectronjs",
+  "version": "1.0.0",
+  "description": "MeteoApp with ElectronJS desktop application",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Yacine RAFES",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^37.2.0"
+  }
+}
