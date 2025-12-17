@@ -1,8 +1,10 @@
 name: Build Electron App
 on:
     push:
+        tags:
+          - 'v*'
         branches:
-            - main
+          - main
 jobs :
     build :
         name : Build
