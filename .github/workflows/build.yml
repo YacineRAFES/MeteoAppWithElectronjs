@@ -25,6 +25,12 @@ jobs :
               env:
                 GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
 
+            - name: Remove useless files
+              run: |
+                Remove-Item -Path dist/*.yml -ErrorAction Ignore
+                Remove-Item -Path dist/*.blockmap -ErrorAction Ignore
+              shell: pwsh    
+
             - name: GitHub Release
               uses: softprops/action-gh-release@v2
               with:

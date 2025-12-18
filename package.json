@@ -17,6 +17,7 @@
     "appId": "com.meteo.app",
     "productName": "MeteoApp",
     "artifactName": "${productName}-Setup-${version}.${ext}",
+    "publish": null,
     "win": {
       "target": "nsis"
     }
