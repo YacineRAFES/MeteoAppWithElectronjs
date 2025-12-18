@@ -19,11 +19,21 @@ jobs:
         with:
           token: ${{ secrets.RELEASE_TOKEN }}
 
-      - name: Create tag
+      - name: Update package.json version
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           
+          # Met à jour la version dans package.json sans créer de tag Git
+          npm version ${{ inputs.version }} --no-git-tag-version
+          
+          # Commit le changement du package.json
+          git add package.json package-lock.json
+          git commit -m "chore: bump version to ${{ inputs.version }}"
+          git push origin main
+
+      - name: Create tag
+        run: |          
           git tag -a v${{ inputs.version }} -m "Release v${{ inputs.version }}"
           
           git push origin v${{ inputs.version }}
