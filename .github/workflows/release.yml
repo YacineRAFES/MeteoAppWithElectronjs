@@ -29,7 +29,7 @@ jobs:
           
           # Commit le changement du package.json
           git add package.json package-lock.json
-          git commit -m "chore: bump version to ${{ inputs.version }}"
+          git commit -m "Mise à jour de la version à ${{ inputs.version }}"
           git push origin main
 
       - name: Create tag
