@@ -66,10 +66,13 @@ export async function ConstructElementMeteoJournee(meteoJournee) {
     const meteoJourneeDiv = document.getElementById('meteoJournee');
     //Vide le contenu
     meteoJourneeDiv.innerHTML = '';
-    for (let i = 0; i < meteoJournee.wmoCode.length; i++) {
+
+    for (let i = 0; i < Math.min(6, meteoJournee.wmoCode.length); i++) {
         const div = document.createElement("div");
-        const meteoJourneeSituation = await getWeatherIcon(meteoJournee.wmoCode[i]);
         div.className = "col-2";
+
+        const meteoJourneeSituation = await getWeatherIcon(meteoJournee.wmoCode[i]);
+
         div.innerHTML += `
             <div class="card text-center border-0">
                 <div class="card-body">
@@ -83,10 +86,10 @@ export async function ConstructElementMeteoJournee(meteoJournee) {
 
         meteoJourneeDiv.appendChild(div);
     }
+    
     meteoJourneeDiv.classList.remove("blocParDefaut");
     meteoJourneeDiv.classList.remove("bg-light");
     meteoJourneeDiv.classList.add("bg-white");
-    // Ajoute le div crée dans meteoActuelle
 }
 
 export async function ConstructElementMeteoSemaine(meteoSemaine) {
