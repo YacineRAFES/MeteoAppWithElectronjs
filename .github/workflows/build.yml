@@ -25,6 +25,12 @@ jobs :
               env:
                 GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
 
+            - name: Cleanup artifacts
+              run: |
+                rm dist/*.yml
+                rm dist/*.blockmap
+              shell: bash
+
             - name: GitHub Release
               uses: softprops/action-gh-release@v2
               with:
