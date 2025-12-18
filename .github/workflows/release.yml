@@ -4,8 +4,11 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: '1.0.1'
+        description: 'Version du tag à saisir'
         required: true
+
+permissions:
+  contents: write
 
 jobs:
   tag:
@@ -13,6 +16,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Create tag
         run: |
